@@ -42,12 +42,14 @@ public class Mage extends Character implements Healer {
         
          //Also, mage lose mana when heals, so we need to validate if we have enough
         if (this.mana >= 10){
-            if(lifePlayer >= player.getMaxLife() - 20) {
+            player.setLife(Math.min(player.getMaxLife(), lifePlayer + 20));
+            //Worst logic
+            /* if(lifePlayer >= player.getMaxLife() - 20) {
                 player.setLife(player.getMaxLife());
             } else {
                 player.setLife(lifePlayer + 20);
-                setMana(this.mana -= 10);
-            }
+            } */
+        setMana(this.getMana() - 10);
         System.out.println(player.getName() + " was healed by 20 hp");
         } else {
             System.out.println("Not enough mana");

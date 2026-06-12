@@ -86,11 +86,14 @@ package RpgGame;
         //Method to simulate the attack from one character to another
         public void receiveDamage(int damage) {
             //Validate life before took damage. If it's less or equal damage, goes to 0.
-            if (this.life <= damage){
+            this.setLife(Math.max(0,(this.life - damage)));
+
+            //Worst logic, simplified by Math.max
+            /* if (this.life <= damage){
                 this.setLife(0);
             } else {
                 this.setLife(this.life - damage);
-            }
+            } */
         }
 
     
