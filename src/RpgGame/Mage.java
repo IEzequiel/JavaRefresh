@@ -22,19 +22,10 @@ public class Mage extends Character implements Healer {
     }
 
     //Method to replenish mana
-    public void meditate (){
-        System.out.println("Charging mana...");
-
-        try {
-            // 3000 milliseconds = 3 seconds
-            Thread.sleep(3000); 
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-        this.setMana(100);
-
-        System.out.println("Mana's full!!");
-    }
+    public void meditate() {
+    System.out.println(getName() + " se concentra y recarga su maná por completo en segundo plano.");
+    this.setMana(100); // En un entorno asíncrono real, esto tardaría, pero aquí no bloquea el flujo
+            }
 
     @Override
     public void heal(Character player) {
@@ -58,14 +49,15 @@ public class Mage extends Character implements Healer {
 
     @Override
     public void attack(Character target) {
-        int targetDamage = super.getDamage();
-        //Mage needs mana in order to attack, so we need to check if it has enough
-        if (this.mana >= 20){
-            target.receiveDamage(targetDamage);
-            setMana(this.getMana() - 20);
-        System.out.println("You attacked  "+ target.getName() + " and took him " + targetDamage + " of his life");
-        } else {
-            System.out.println("Not enough mana");
+    int targetDamage = super.getDamage(); //
+    
+    if (this.mana >= 20) { 
+        target.receiveDamage(targetDamage); 
+        setMana(this.getMana() - 20); 
+        System.out.println(getName() + " atacó a " + target.getName() + " y le quitó " + targetDamage + " de vida."); 
+    } else {
+        System.out.println(getName() + " no tiene suficiente maná para atacar. ¡Activando meditación automática!");
+        this.meditate(); // El mago se autorecarga
         }      
     }
     
