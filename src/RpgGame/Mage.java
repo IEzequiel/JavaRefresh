@@ -62,7 +62,7 @@ public class Mage extends Character implements Healer {
         //Mage needs mana in order to attack, so we need to check if it has enough
         if (this.mana >= 20){
             target.receiveDamage(targetDamage);
-            setMana(this.mana -= 20);
+            setMana(this.getMana() - 20);
         System.out.println("You attacked  "+ target.getName() + " and took him " + targetDamage + " of his life");
         } else {
             System.out.println("Not enough mana");
