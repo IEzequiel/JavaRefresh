@@ -28,7 +28,7 @@ public class Warrior extends Character {
     public void attack (Character target) {
         int targetDamage = super.getDamage();
         target.receiveDamage(targetDamage);
-        System.out.println("You attacked "+ target.getName() + " and took him " + targetDamage + " of his life");
+        System.out.println(this.getName() + " attack " + target.getName() + " and damage him for " + targetDamage + "hp");
     }
 
 

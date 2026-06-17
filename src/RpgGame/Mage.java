@@ -54,10 +54,10 @@ public class Mage extends Character implements Healer {
     if (this.mana >= 20) { 
         target.receiveDamage(targetDamage); 
         setMana(this.getMana() - 20); 
-        System.out.println(getName() + " atacó a " + target.getName() + " y le quitó " + targetDamage + " de vida."); 
+        System.out.println(this.getName() + " attack " + target.getName() + " and damage him for " + targetDamage + "hp"); 
     } else {
-        System.out.println(getName() + " no tiene suficiente maná para atacar. ¡Activando meditación automática!");
-        this.meditate(); // El mago se autorecarga
+        System.out.println(this.getName() + " doesn't have enough mana. Meditation is active now!");
+        this.meditate(); // Mage's autocharge
         }      
     }
     

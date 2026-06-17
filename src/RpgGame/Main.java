@@ -3,29 +3,34 @@ package RpgGame;
 public class Main {
 
     public static void main (String[] args) {
-            
-        Warrior arthas = new Warrior("Arthas");
-        Mage gandalf = new Mage ("Gandalf");
         
-        //Show character's initial stats
-        arthas.getStats();
-        gandalf.getStats();
+        //1) Create a new Guild
+        Guild horde = new Guild("Horde");
 
-        //simular ataque
-        arthas.attack(gandalf);
-        gandalf.attack(arthas);
+        //2) Create characters and add them to the Guild
+        Warrior davion = new Warrior("Davion");
+        Warrior arthas = new Warrior("Arthas");
+        Mage luna = new Mage("Luna");
+        Mage arana = new Mage("Arana");
 
-        //Show character's initial stats
-        arthas.getStats();
-        gandalf.getStats();
-        System.out.println("Mana restante de " + gandalf.getName() + ": " + gandalf.getMana());
+        //3) add the new characters to horde guild
+        horde.addMember(davion);
+        horde.addMember(arthas);
+        horde.addMember(luna);
+        horde.addMember(arana);
 
-        //Regenerar mana de gandalf
-        gandalf.meditate();
-        System.out.println("Mana restante de " + gandalf.getName() + ": " + gandalf.getMana());
+        //4) create a boss: a new character more powerful with 500 life
+        Warrior voldemort = new Warrior("Voldemort");
+        voldemort.setLife(500);
 
-        //Curar personaje con Mago
-        gandalf.heal(arthas);
-        arthas.getStats();
+        //5) order the guild to attack the boss
+        horde.massAttack(voldemort);
+
+        //6) show boss stats
+        System.out.println(voldemort.getStats()); 
+
+        //7) show guild members stats
+        horde.showMembersStats();
+
     }
 }

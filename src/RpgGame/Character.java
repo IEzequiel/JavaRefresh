@@ -76,9 +76,9 @@ package RpgGame;
         this.damage = damage;
     }
                                                                                                                                                                                                                      
-        // Method to display stats                                                                                                                                                                                   
-        public void getStats() {                                                                                                                                                                                     
-            System.out.println("The hero " + name + " is level " + level + " with " + life + " HP and " + strength + " strength.");                                                                                  
+        // Method to return stats                                                                                                                                                                                   
+        public String getStats() {                                                                                                                                                                                     
+            return ("The hero " + name + " is level " + level + " with " + life + " HP and " + strength + " strength.");                                                                                  
         }
         
         public abstract void attack (Character target);
