@@ -22,13 +22,10 @@ public class Guild {
         this.guildName = guildName;
     }
 
-    //Show all the guild members and their stats
-    public void showMembersStats () {
-        for (Character member : this.members) {
-            System.out.println("********************************");
-            System.out.println(member.getStats());
+    // Return a copy list of the guild members
+    public List<Character> getMembersList() {
+        return new ArrayList<>(this.members);
         }
-    }
 
     //all guild attacks one enemy
     public void massAttack (Character character) {
@@ -37,14 +34,23 @@ public class Guild {
         }
     }
 
-    public void addMember (Character member){
+    public boolean addMember (Character member){
+        boolean exist = false;
         if (existingMember(member)) { //to avoid duplicates
-            System.out.println(member.getName() + "is already member of this guild");
-        }
-        this.members.add(member);
+            exist = true;
+        } else {
+            this.members.add(member);
+                }
+        return exist; 
     }
 
     private boolean existingMember(Character newMember) {
+        
+        //Updated method (Java 8+) more declarative
+        boolean answer = this.members.stream().anyMatch(member -> member.getName().equalsIgnoreCase(newMember.getName()));
+        return answer;
+        
+        /* 
         boolean isMember = false;
         for (Character member : this.members) {
             if (member.getName().equalsIgnoreCase(newMember.getName())) {
@@ -52,7 +58,7 @@ public class Guild {
                 break;
             }
         }
-        return isMember;
+        return isMember;*/
     }
 
 

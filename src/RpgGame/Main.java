@@ -1,5 +1,7 @@
 package RpgGame;
 
+import java.util.List;
+
 public class Main {
 
     public static void main (String[] args) {
@@ -29,8 +31,12 @@ public class Main {
         //6) show boss stats
         System.out.println(voldemort.getStats()); 
 
-        //7) show guild members stats
-        horde.showMembersStats();
+        // 7) show guild members stats
+        List<Character> roster = horde.getMembersList();
+            for (Character member : roster) {
+                System.out.println("********************************");
+                System.out.println(member.getStats());
+            }
 
     }
 }
