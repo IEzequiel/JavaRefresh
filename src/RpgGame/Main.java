@@ -5,7 +5,21 @@ import java.util.List;
 public class Main {
 
     public static void main (String[] args) {
+
+        //Practice - Week 4
+        //Ex1 Simulate a dead character and attack
+        Warrior davion = new Warrior("Davion");
+        Warrior arthas = new Warrior("Arthas");
+        davion.setLife(0);
+        try {
+            davion.attack(arthas);
+        } catch (Exception e) {
+            System.out.println("You can't attack if you are dead...");
+        }
+        System.out.println(arthas.getStats());        
+
         
+        /* //Practice - Week 3
         //1) Create a new Guild
         Guild horde = new Guild("Horde");
 
@@ -37,6 +51,6 @@ public class Main {
                 System.out.println("********************************");
                 System.out.println(member.getStats());
             }
-
+            */
     }
 }

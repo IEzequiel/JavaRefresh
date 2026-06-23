@@ -2,6 +2,8 @@ package RpgGame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Guild {
 
@@ -28,10 +30,13 @@ public class Guild {
         }
 
     //all guild attacks one enemy
-    public void massAttack (Character character) {
+    public void massAttack (Character enemy) {
+
+        this.members.stream().forEach(member -> member.attack(enemy));
+        /*
         for (Character member : this.members) {
             member.attack(character);
-        }
+        }*/
     }
 
     public boolean addMember (Character member){
@@ -50,16 +55,12 @@ public class Guild {
         boolean answer = this.members.stream().anyMatch(member -> member.getName().equalsIgnoreCase(newMember.getName()));
         return answer;
         
-        /* 
-        boolean isMember = false;
-        for (Character member : this.members) {
-            if (member.getName().equalsIgnoreCase(newMember.getName())) {
-                isMember = true;
-                break;
-            }
-        }
-        return isMember;*/
     }
 
+    //Week 4 - Get healers 
+    public List<Character> getHealers(){
+        return this.members.stream()
+               .filter(member -> member instanceof Healer).collect(Collectors.toList()); //Actualziar version de Java para simplificar a "toList()"
+    }
 
 }

@@ -26,6 +26,11 @@ public class Warrior extends Character {
 
     @Override
     public void attack (Character target) {
+
+        if (this.getLife() <= 0){
+        throw new CharacterDeadException(this.getName() + " can't attack because is dead");
+                }
+
         int targetDamage = super.getDamage();
         target.receiveDamage(targetDamage);
         System.out.println(this.getName() + " attack " + target.getName() + " and damage him for " + targetDamage + "hp");

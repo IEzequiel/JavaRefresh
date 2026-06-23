@@ -51,6 +51,10 @@ public class Mage extends Character implements Healer {
     public void attack(Character target) {
     int targetDamage = super.getDamage(); //
     
+    if (this.getLife() <= 0){
+        throw new CharacterDeadException(this.getName() + " can't attack because is dead");
+            }
+
     if (this.mana >= 20) { 
         target.receiveDamage(targetDamage); 
         setMana(this.getMana() - 20); 
