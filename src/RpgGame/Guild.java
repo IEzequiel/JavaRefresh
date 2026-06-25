@@ -1,9 +1,9 @@
 package RpgGame;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public class Guild {
 
@@ -60,7 +60,17 @@ public class Guild {
     //Week 4 - Get healers 
     public List<Character> getHealers(){
         return this.members.stream()
-               .filter(member -> member instanceof Healer).collect(Collectors.toList()); //Actualziar version de Java para simplificar a "toList()"
+               .filter(member -> member instanceof Healer).toList(); 
+    }
+
+    //Week 4 - Count alive members
+    public long countAliveMembers (){
+        return this.members.stream().filter(member -> member.getLife() > 0).count();
+    }
+
+    //Week 4 - Search strongest member
+    public Optional<Character> getStrongestMember() {
+        return this.members.stream().max(Comparator.comparingInt(member -> member.getStrength()));
     }
 
 }

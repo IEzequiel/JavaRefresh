@@ -1,6 +1,7 @@
 package RpgGame;
 
 import java.util.List;
+import java.util.Optional;
 
 public class Main {
 
@@ -16,7 +17,20 @@ public class Main {
         } catch (Exception e) {
             System.out.println("You can't attack if you are dead...");
         }
-        System.out.println(arthas.getStats());        
+        System.out.println(arthas.getStats());
+        
+        //Ex2 Count alive members
+        Guild horde = new Guild("Horde");
+        Mage luna = new Mage("Luna");
+        Mage arana = new Mage("Arana");
+        horde.addMember(davion);
+        horde.addMember(arthas);
+        horde.addMember(luna);
+        horde.addMember(arana);
+        System.out.println("Members alive: " + horde.countAliveMembers());
+
+        //Ex3 Search strongest member
+        horde.getStrongestMember().ifPresent(member -> System.out.println("Strongest member: " + member.getName()));
 
         
         /* //Practice - Week 3
