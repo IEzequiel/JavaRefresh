@@ -29,10 +29,11 @@ public class Guild {
         return new ArrayList<>(this.members);
         }
 
-    //all guild attacks one enemy
+    //Guild attacks one enemy
     public void massAttack (Character enemy) {
 
-        this.members.stream().forEach(member -> member.attack(enemy));
+        //Newer expression - Modern Java
+        this.members.forEach(member -> member.attack(enemy));
         /*
         for (Character member : this.members) {
             member.attack(character);
@@ -70,7 +71,11 @@ public class Guild {
 
     //Week 4 - Search strongest member
     public Optional<Character> getStrongestMember() {
-        return this.members.stream().max(Comparator.comparingInt(member -> member.getStrength()));
+
+        //Method reference //Shorter than lambda
+        return this.members.stream().max(Comparator.comparingInt(Character::getStrength));
+        //Lambda expression
+        //return this.members.stream().max(Comparator.comparingInt(member -> member.getStrength()));
     }
 
 }
